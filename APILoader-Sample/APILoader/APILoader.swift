@@ -37,7 +37,9 @@ open class APILoader {
         request.httpMethod = "POST"
         
         if parameters != nil {
-            do { request.httpBody = try JSONSerialization.data(withJSONObject: parameters!, options:[]) }
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: parameters!, options:.prettyPrinted)
+            }
             catch { print(error) }
         }
         
@@ -73,7 +75,4 @@ extension APILoader {
         }
         return request
     }
-    
-    
-    private func setQuery(){}
 }
