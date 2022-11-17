@@ -6,8 +6,9 @@
 //
 
 import Foundation
-
-struct HTTPHeader {
+/// ex) name=”content-type”,　value=”application/json”
+public struct HTTPHeader {
+   
     let name:String
     let value:String
      
