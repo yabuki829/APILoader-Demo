@@ -5,7 +5,7 @@ public let AL = APILoader.shared
 open class APILoader {
     static let shared = APILoader()
     
-    public func requestGET(_ url:String,headers:[HTTPHeader]? = nil, compleation:@escaping (Data) -> Void){
+    public func requestGET(_ url:String,headers:[HTTPHeader]? = nil, compleation:@escaping (Result<Data,APIError>) -> Void){
         guard let URL = URL(string: url) else { return }
         var request = URLRequest(url: URL)
         request.httpMethod = "GET"
@@ -14,8 +14,26 @@ open class APILoader {
         }
        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else { return }
-            compleation(data)
+            
+            if error != nil {
+                compleation(.failure(.invalid(reason: error?.localizedDescription ?? "ERROR")))
+            }
+                
+            if let response = response as? HTTPURLResponse {
+               
+                if !(200...299).contains(response.statusCode) {
+                    let reason = self.errorHandling(response: response)
+                    compleation(.failure(.invalid(reason: reason )))
+                }
+            }
+                
+            
+            guard let data = data else {
+                return
+            }
+
+            compleation(.success(data))
+            
            
         }
         task.resume()
@@ -98,5 +116,10 @@ extension APILoader {
             request.setValue(header[i].value, forHTTPHeaderField: header[i].name)
         }
         return request
+    }
+    
+    private func errorHandling(response:HTTPURLResponse)-> String {
+        let message = HTTPURLResponse.localizedString(forStatusCode: response.statusCode)
+        return "[\(response.statusCode)] \(message)"
     }
 }

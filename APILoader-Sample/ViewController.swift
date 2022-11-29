@@ -31,24 +31,30 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let url = "https://fakestoreapi.com/products"
-        let url = "http://127.0.0.1:8000/api/job/1"
-        post(url: url)
+        let url = "https://fakestoreapi.com/product"
+//        let url = "http://127.0.0.1:8000/api/job/1"
+//        post(url: url)
         get(url: url)
         
     }
     
     
-    
-    
     func get(url:String){
-        AL.requestGET(url) { data in
-            do {
-                let objects = try JSONDecoder().decode([Job].self, from: data)
-                print(objects)
-            } catch {
-                print("エラー",error)
+        AL.requestGET(url) { result in
+            switch result {
+            case .success(let data):
+                print("Success")
+                do {
+                    let objects = try JSONDecoder().decode([Product].self, from: data)
+                    print(objects)
+                } catch {
+                
+                }
+            case .failure(let error):
+                print("取得エラー",error)
+               
             }
+            
         }
     }
     

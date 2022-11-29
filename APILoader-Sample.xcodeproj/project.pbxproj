@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A275D3629360EAE001A733E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A275D3529360EAE001A733E /* Error.swift */; };
 		1ADA733D292374D7009AFC4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA733C292374D7009AFC4B /* AppDelegate.swift */; };
 		1ADA733F292374D7009AFC4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA733E292374D7009AFC4B /* SceneDelegate.swift */; };
 		1ADA7341292374D7009AFC4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA7340292374D7009AFC4B /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A275D3529360EAE001A733E /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1ADA7339292374D7009AFC4B /* APILoader-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "APILoader-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ADA733C292374D7009AFC4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ADA733E292374D7009AFC4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				1ADA735029237501009AFC4B /* APILoader.swift */,
 				1ADA735729238921009AFC4B /* HTTPHeader.swift */,
 				1ADA7359292399A7009AFC4B /* Parameter.swift */,
+				1A275D3529360EAE001A733E /* Error.swift */,
 			);
 			path = APILoader;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				1ADA733F292374D7009AFC4B /* SceneDelegate.swift in Sources */,
 				1ADA735129237501009AFC4B /* APILoader.swift in Sources */,
 				1ADA735A292399A7009AFC4B /* Parameter.swift in Sources */,
+				1A275D3629360EAE001A733E /* Error.swift in Sources */,
 				1ADA735829238921009AFC4B /* HTTPHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
