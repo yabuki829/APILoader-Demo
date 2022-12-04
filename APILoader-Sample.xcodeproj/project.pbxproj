@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A275D3629360EAE001A733E /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A275D3529360EAE001A733E /* Error.swift */; };
+		1A2C32B4293C75E60095CB51 /* EasyLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2C32B3293C75E60095CB51 /* EasyLayout */; };
 		1ADA733D292374D7009AFC4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA733C292374D7009AFC4B /* AppDelegate.swift */; };
 		1ADA733F292374D7009AFC4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA733E292374D7009AFC4B /* SceneDelegate.swift */; };
 		1ADA7341292374D7009AFC4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA7340292374D7009AFC4B /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2C32B4293C75E60095CB51 /* EasyLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +105,9 @@
 			dependencies = (
 			);
 			name = "APILoader-Sample";
+			packageProductDependencies = (
+				1A2C32B3293C75E60095CB51 /* EasyLayout */,
+			);
 			productName = "APILoader-Sample";
 			productReference = 1ADA7339292374D7009AFC4B /* APILoader-Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -131,6 +136,9 @@
 				Base,
 			);
 			mainGroup = 1ADA7330292374D7009AFC4B;
+			packageReferences = (
+				1A2C32B2293C75E60095CB51 /* XCRemoteSwiftPackageReference "EasyLayout" */,
+			);
 			productRefGroup = 1ADA733A292374D7009AFC4B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -382,6 +390,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A2C32B2293C75E60095CB51 /* XCRemoteSwiftPackageReference "EasyLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yabuki829/EasyLayout.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A2C32B3293C75E60095CB51 /* EasyLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2C32B2293C75E60095CB51 /* XCRemoteSwiftPackageReference "EasyLayout" */;
+			productName = EasyLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1ADA7331292374D7009AFC4B /* Project object */;
 }

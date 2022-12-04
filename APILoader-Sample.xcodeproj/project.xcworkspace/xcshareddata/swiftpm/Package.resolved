@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "easylayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yabuki829/EasyLayout.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "aba1fecb02ef9bf1f8afe38f0dcc97c03136d9b9"
+      }
+    }
+  ],
+  "version" : 2
+}

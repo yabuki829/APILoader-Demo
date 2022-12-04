@@ -21,6 +21,7 @@ open class APILoader {
                 
             if let response = response as? HTTPURLResponse {
                
+                //成功のstatusでなければ
                 if !(200...299).contains(response.statusCode) {
                     let reason = self.errorHandling(response: response)
                     compleation(.failure(.invalid(reason: reason )))
@@ -41,7 +42,7 @@ open class APILoader {
     
    
     
-    public func requestPOST(_ url:String,headers:[HTTPHeader]? = nil,parameters:Parameters? = nil ,compleation:@escaping (Data)-> Void){
+    public func requestPOST(_ url:String,headers:[HTTPHeader]? = nil,parameters:Parameters? = nil ,compleation:@escaping (Result<Data,APIError>)-> Void){
         guard let URL = URL(string: url) else { return }
         var request = URLRequest(url: URL)
         request.httpMethod = "POST"
@@ -58,12 +59,24 @@ open class APILoader {
         }
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
-            compleation(data)
+            if error != nil {
+                compleation(.failure(.invalid(reason: error?.localizedDescription ?? "ERROR")))
+            }
+                
+            if let response = response as? HTTPURLResponse {
+               
+                //成功のstatusでなければエラーを返す
+                if !(200...299).contains(response.statusCode) {
+                    let reason = self.errorHandling(response: response)
+                    compleation(.failure(.invalid(reason: reason )))
+                }
+            }
+            compleation(.success(data))
         }
         task.resume()
     }
     
-    public func requestPUT(_ url:String,headers:[HTTPHeader]? = nil,parameters:Parameters? = nil ,compleation:@escaping (Data)-> Void){
+    public func requestPUT(_ url:String,headers:[HTTPHeader]? = nil,parameters:Parameters? = nil ,compleation:@escaping (Result<Data,APIError>)-> Void){
         guard let URL = URL(string: url) else { return }
         var request = URLRequest(url: URL)
         request.httpMethod = "PUT"
@@ -79,12 +92,24 @@ open class APILoader {
         }
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
-            compleation(data)
+            if error != nil {
+                compleation(.failure(.invalid(reason: error?.localizedDescription ?? "ERROR")))
+            }
+                
+            if let response = response as? HTTPURLResponse {
+               
+                //成功のstatusでなければ
+                if !(200...299).contains(response.statusCode) {
+                    let reason = self.errorHandling(response: response)
+                    compleation(.failure(.invalid(reason: reason )))
+                }
+            }
+            compleation(.success(data))
         }
         task.resume()
     }
     
-    public func requestDELETE(_ url:String,headers:[HTTPHeader]? = nil,parameters:Parameters? = nil ,compleation:@escaping (Data)-> Void){
+    public func requestDELETE(_ url:String,headers:[HTTPHeader]? = nil,parameters:Parameters? = nil ,compleation:@escaping (Result<Data,APIError>)-> Void){
         guard let URL = URL(string: url) else { return }
         var request = URLRequest(url: URL)
         request.httpMethod = "DELETE"
@@ -101,7 +126,19 @@ open class APILoader {
         }
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
-            compleation(data)
+            if error != nil {
+                compleation(.failure(.invalid(reason: error?.localizedDescription ?? "ERROR")))
+            }
+                
+            if let response = response as? HTTPURLResponse {
+               
+                //成功のstatusでなければ
+                if !(200...299).contains(response.statusCode) {
+                    let reason = self.errorHandling(response: response)
+                    compleation(.failure(.invalid(reason: reason )))
+                }
+            }
+            compleation(.success(data))
 
         }
         task.resume()
